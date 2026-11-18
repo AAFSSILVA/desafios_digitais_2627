@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desafios SRM · Ciências Naturais 9.º ano</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--tx:#1d2733;--mut:#5b6b7c;--pri:#2a7de1;--ok:#1f9d55;--bad:#d64545;--bd:#d3dce6;--hl:#ffd966;--g1:#1e5fc4;--g2:#7b3fe4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161d;--card:#1a232d;--tx:#e8eef5;--mut:#9fb0c1;--pri:#6aa9f5;--ok:#43c67b;--bad:#f07a7a;--bd:#34424f;--hl:#8a6d12;--g1:#143b7a;--g2:#4a2a8c}}
+:root[data-theme="dark"]{--bg:#10161d;--card:#1a232d;--tx:#e8eef5;--mut:#9fb0c1;--pri:#6aa9f5;--ok:#43c67b;--bad:#f07a7a;--bd:#34424f;--hl:#8a6d12;--g1:#143b7a;--g2:#4a2a8c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
+header{padding:22px 16px 14px;text-align:center;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-radius:0 0 26px 26px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+h1{margin:0;font-size:1.55rem}header p{margin:6px auto 0;max-width:680px;opacity:.92;font-size:.92rem}
+#pg{height:8px;background:rgba(255,255,255,.28);border-radius:6px;max-width:420px;margin:12px auto 0;overflow:hidden}#pg i{display:block;height:100%;width:0;background:#ffd966;transition:width .5s}
+#ctl{position:fixed;top:calc(env(safe-area-inset-top,0px) + 6px);right:8px;z-index:20;display:flex;align-items:center;gap:2px;background:var(--card);color:var(--tx);border-radius:999px;padding:3px 10px 3px 3px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+#ctl button{border:0;background:none;font-size:1.25rem;width:38px;height:38px;cursor:pointer;color:inherit}#vol{width:72px;accent-color:var(--pri)}
+nav button.opt{border-style:dashed;border-color:#e0a800}
+.cc{display:inline-flex;gap:3px;align-items:center;text-decoration:none;color:var(--mut);font-size:.78rem}
+header{padding-top:54px!important}header h2.cls{margin:6px 0 0;font-size:1.7rem;letter-spacing:.14em;color:#ffd966}h1{font-size:1.3rem}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 12px}
+nav button{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:9px 13px;border-radius:999px;font-size:.9rem;cursor:pointer;transition:.15s}
+nav button:hover{transform:translateY(-2px)}nav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}nav button.dn{border-color:var(--ok)}
+main{max-width:760px;margin:0 auto;padding:0 14px 20px}
+section{display:none;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+section.on{display:block;animation:pop .35s}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}}
+h2{margin:0 0 4px;font-size:1.25rem}.sub{color:var(--mut);margin:0 0 14px}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-size:.95rem;cursor:pointer;margin:10px 8px 0 0;font-weight:600}
+.btn:active{transform:scale(.96)}.btn.alt{background:transparent;color:var(--pri);border:1px solid var(--pri)}
+.msg{min-height:1.5em;margin-top:10px;font-weight:600}.ok{color:var(--ok)}.bad{color:var(--bad)}
+#ws{display:grid;grid-template-columns:repeat(16,1fr);gap:1px;max-width:520px;margin:0 auto 12px;user-select:none}
+#ws div{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);border-radius:4px;font-weight:700;cursor:pointer;font-size:clamp(.6rem,2.7vw,.95rem)}
+#ws div.sel{background:var(--hl)}#ws div.f{background:var(--ok);color:#fff;border-color:var(--ok)}
+#wl{display:grid;gap:5px;padding:0;list-style:none;font-size:.88rem}#wl li{padding:4px 10px;border:1px solid var(--bd);border-radius:10px}#wl li.f{background:var(--ok);color:#fff;border-color:var(--ok)}
+.org{text-align:center}.org .lv{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0}.org .grp{border:2px dashed var(--bd);border-radius:12px;padding:8px;flex:1;min-width:150px}
+.org .root{display:inline-block;background:var(--pri);color:#fff;font-weight:700;padding:8px 18px;border-radius:12px}
+#mz{display:grid;margin:0 auto;width:max-content;border:2px solid var(--tx)}#mz div{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;border:0 solid var(--tx)}
+.pad{display:grid;grid-template-columns:repeat(3,56px);gap:6px;justify-content:center;margin-top:12px}.pad button{height:48px;font-size:1.3rem;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px dashed var(--bd)}
+select,input.t{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:.95rem;max-width:100%}
+select.r{outline:3px solid var(--ok)}select.w{outline:3px solid var(--bad)}
+.mc{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mc button{min-height:92px;padding:5px;border-radius:12px;border:2px solid var(--pri);background:var(--card);color:var(--tx);font-size:.72rem;cursor:pointer}.mc button.up{background:var(--pri);color:#fff}.mc button.done{background:var(--ok);border-color:var(--ok);color:#fff}
+#gl{display:grid;grid-template-columns:repeat(3,90px);gap:8px;justify-content:center;margin:12px 0}#gl button{height:90px;font-size:2.4rem;border-radius:14px;border:2px solid var(--pri);background:var(--card);color:var(--tx);cursor:pointer}#gl button.X{background:rgba(31,157,85,.25);border-color:var(--ok)}#gl button.O{background:rgba(214,69,69,.25);border-color:var(--bad)}
+.hud{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-weight:700}.bar{height:10px;background:var(--bd);border-radius:6px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:100%;background:var(--pri)}
+.qo{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border-radius:10px;border:1px solid var(--pri);background:var(--card);color:var(--tx);font-size:.95rem;cursor:pointer}
+.qo.ok2{background:var(--ok);color:#fff;border-color:var(--ok)}.qo.no{background:var(--bad);color:#fff;border-color:var(--bad)}.code{font-size:1.3rem;letter-spacing:.2em}
+[hidden]{display:none!important}
+.gbox{max-width:480px;margin:30px auto;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.1)}.gbox input{width:100%;margin:6px 0}
+.proof{border:3px solid var(--ok);border-radius:14px;padding:14px;text-align:center;margin-top:14px;background:rgba(31,157,85,.12)}.proof .pt{font-weight:800;color:var(--ok);letter-spacing:.05em}.proof .pn{font-size:1.5rem;font-weight:800;margin:6px 0}.proof .pd{color:var(--mut);font-size:.9rem;margin-top:4px}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:14px 10px 28px}
+.cf{position:fixed;top:40%;left:50%;font-size:1.6rem;pointer-events:none;z-index:30;animation:fall 1.6s ease-out forwards}
+@keyframes fall{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+body.lk{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}body.lk input,body.lk select{-webkit-user-select:text;user-select:text}
+@media print{body.lk{display:none}}
+</style>
+</head>
+<body>
+<div id="ctl"><button id="mute" title="Ligar/desligar todos os sons" onclick="toggleMute()">🔊</button><span title="Volume da música de fundo">🎵</span><input type="range" id="vol" min="0" max="100" value="55" oninput="setVol(this.value)" aria-label="Volume da música de fundo"></div>
+<header><h1>Desafios de Ciências Naturais - 9º ano - 2026/2027</h1><h2 class="cls">CN9E2627</h2><div id="pg"><i></i></div></header>
+<div id="gate"><div class="gbox"><h2>👋 Bem-vindo(a)!</h2><p class="sub">Escreve o teu nome (e a turma) e a senha que o professor te deu. O nome vai aparecer na confirmação de cada desafio.<br><br>🧪 Sistema reprodutor masculino. Resolve os desafios pela ordem que quiseres. Se errares, o desafio recomeça do zero! 📸 Em cada desafio concluído, tira uma captura de ecrã da confirmação. 🎵 Há música de fundo: regula o volume no canto superior direito.</p><input class="t" id="nm" maxlength="40" placeholder="Nome e apelido · turma" autocomplete="off"><input class="t" id="pw" type="password" maxlength="20" placeholder="Senha" autocomplete="off"><button class="btn" onclick="startGame()">Começar 🚀</button><div class="msg bad" id="gm"></div></div></div>
+<nav id="nav" hidden></nav>
+<main id="mn" hidden>
+<section id="s0"><h2>🔎 Sopa de letras</h2><p class="sub">15 palavras do sistema reprodutor masculino, em qualquer direção e sentido. Só tens as pistas! Clica na primeira e depois na última letra. Se submeteres sem as ter todas, a grelha muda.</p><div id="ws"></div><ul id="wl"></ul><button class="btn" onclick="subWS()">Submeter</button><div class="msg" id="wm"></div><div id="nx0"></div></section>
+<section id="s1"><h2>🧩 Organograma</h2><p class="sub">Completa o organograma do sistema reprodutor masculino escolhendo o nome certo para cada caixa. Dentro de cada grupo a ordem das estruturas é livre.</p><div class="org" id="og"></div><button class="btn" onclick="checkOrg()">Verificar</button><div class="msg" id="om1"></div><div id="nx1"></div></section>
+<section id="s2"><h2>🌀 Labirinto do espermatozoide</h2><p class="sub">Leva o espermatozoide 🏊 dos testículos até à saída 🏁, passando <b>por esta ordem</b> por 1️⃣ epidídimo, 2️⃣ canal deferente e 3️⃣ uretra. Se chegares ao fim sem cumprir a ordem, falhas. Setas do teclado ou botões.</p><div id="mz"></div><div class="pad"><span></span><button onclick="mv(0)">↑</button><span></span><button onclick="mv(3)">←</button><button onclick="mv(2)">↓</button><button onclick="mv(1)">→</button></div><div class="msg" id="mm"></div><div id="nx2"></div></section>
+<section id="s3"><h2>⚡ Desafio relâmpago</h2><p class="sub">Parte 1: classifica cada estrutura. Parte 2: verdadeiro ou falso, com armadilhas! Todas as respostas têm de estar certas.</p><div id="lv"></div><h3>Verdadeiro ou falso?</h3><div id="vf"></div><button class="btn" onclick="checkFlash()">Verificar tudo</button><div class="msg" id="om"></div><div id="nx3"></div></section>
+<section id="s4"><h2>🃏 Jogo da memória</h2><p class="sub">12 pares de estrutura e função/característica. Tens no máximo 24 tentativas falhadas; se as esgotares, recomeças.</p><div class="mc" id="mc"></div><div class="msg" id="mem"></div><div id="nx4"></div></section>
+<section id="s5"><h2>🎮 Jogo do Galo: tu vs. dispositivo</h2><p class="sub">Tu és ❌ e o dispositivo é ⭕. Para ocupares uma casa tens de acertar na pergunta; se errares, a casa fica para o dispositivo! Faz uma linha de três para venceres. Empate ou derrota: recomeças.</p><div id="gl"></div><div id="gq"></div><div class="msg" id="gmsg"></div><div id="nx5"></div></section>
+<section id="s6"><h2>🏆 Arena Quiz</h2><p class="sub">10 perguntas sorteadas, 20 segundos cada. Um único erro (ou tempo esgotado) e a partida recomeça com novas perguntas. Precisas de 10 em 10!</p><div id="qz"></div><div class="msg" id="qzm"></div><div id="nx6"></div></section>
+<section id="s7"><h2>🔐 Escape Room da Clínica</h2><p class="sub">8 portas, 8 letras. Uma resposta errada e voltas à Porta 1! No fim, as letras estão baralhadas: forma a palavra-passe do cofre (uma glândula anexa).</p><div id="es"></div><div class="msg" id="esm"></div><div id="nx7"></div></section>
+<section id="s8"><h2>⏱ Contrarrelógio ⭐ <small>(opcional)</small></h2><p class="sub">Para os mais rápidos: tens 75 segundos para acertar em 12 perguntas. Cada resposta errada custa 5 segundos! Se o tempo acabar, recomeças.</p><div id="ctq"></div><div class="msg" id="ctmsg"></div><div id="nx8"></div></section>
+<section id="s9"><h2>⚔️ Duelo Final ⭐ <small>(opcional)</small></h2><p class="sub">Tu contra o dispositivo 🤖! Em cada ronda, quem acertar primeiro ganha o ponto (o dispositivo acerta cerca de 65% das vezes e responde entre 4 e 10 s). Ganha quem chegar primeiro a 6 pontos. Se perderes, recomeças.</p><div id="duq"></div><div class="msg" id="dumsg"></div><div id="nx9"></div></section>
+</main>
+<footer><div>Agrupamento de Escolas de Lousada | Prof. António Alberto Silva | antoniosilva@aelousada.net</div><div style="margin-top:8px"><a class="cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.pt" target="_blank" rel="noopener license" aria-label="Creative Commons BY-NC-ND 4.0"><svg width="150" height="46" viewBox="0 0 150 46" role="img" aria-label="CC BY NC ND"><rect x="1" y="1" width="148" height="44" rx="7" fill="#fff" stroke="#222" stroke-width="2"/><circle cx="21" cy="23" r="15" fill="#fff" stroke="#222" stroke-width="3"/><text x="21" y="28" font-size="13" font-weight="800" text-anchor="middle" font-family="Arial" fill="#222">cc</text><circle cx="56" cy="23" r="15" fill="#222"/><circle cx="56" cy="16" r="3.3" fill="#fff"/><rect x="50.5" y="20.5" width="11" height="8" rx="2" fill="#fff"/><rect x="53.7" y="28.5" width="4.6" height="5.5" fill="#fff"/><circle cx="91" cy="23" r="15" fill="#222"/><text x="91" y="28.5" font-size="15" font-weight="800" text-anchor="middle" font-family="Arial" fill="#fff">$</text><path d="M80 34 L102 12" stroke="#fff" stroke-width="3"/><circle cx="127" cy="23" r="15" fill="#222"/><rect x="120" y="17.5" width="14" height="3.3" fill="#fff"/><rect x="120" y="24.2" width="14" height="3.3" fill="#fff"/></svg></a></div></footer>
+<script>
+const P="NTEwNA==",TEACHER=false;
+if(!TEACHER){document.body.classList.add("lk");
+ ["copy","cut","paste","contextmenu","dragstart","selectstart"].forEach(ev=>document.addEventListener(ev,e=>{if(ev==="selectstart"&&/^(INPUT|SELECT)$/.test(e.target.nodeName||""))return;if(ev==="paste"&&e.target.id==="pw")return;e.preventDefault()},true));
+ document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&["c","x","a","s","p","u"].includes(e.key.toLowerCase()))e.preventDefault()},true)}
+const $=id=>document.getElementById(id),norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim(),shuf=a=>[...a].sort(()=>Math.random()-.5);
+const esc=t=>t.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* ---- sons ---- */
+let AC=null,muted=false,mg=null,musVol=.55,mi=0,mnext=0,mt=null;
+const MG=()=>muted?0:musVol*.18;
+function ac(){if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();mg=AC.createGain();mg.gain.value=MG();mg.connect(AC.destination)}if(AC.state==="suspended")AC.resume();return AC}
+function osc(f,T,d,type,v,dest){const a=AC,o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(.0001,T);g.gain.linearRampToValueAtTime(v,T+.02);g.gain.exponentialRampToValueAtTime(.0001,T+d);o.connect(g);g.connect(dest);o.start(T);o.stop(T+d+.05)}
+function tone(f,d,t="sine",v=.18,s=0){if(muted)return;try{ac();osc(f,AC.currentTime+s,d,t,v,AC.destination)}catch(e){}}
+const SFX={clk:()=>tone(520,.07,"triangle",.14),ok:()=>{tone(660,.14,"sine",.2);tone(880,.2,"sine",.2,.1)},bad:()=>{tone(200,.3,"sawtooth",.1);tone(150,.3,"sawtooth",.1,.15)},step:()=>tone(330,.04,"square",.04),win:()=>[523,659,784,1047,1319].forEach((f,i)=>tone(f,.24,"sine",.18,i*.11))};
+const CH=[[110,[220,261.63,329.63,440]],[87.31,[174.61,220,261.63,349.23]],[130.81,[261.63,329.63,392,523.25]],[98,[196,246.94,293.66,392]]],PT=[0,1,2,3,2,1,2,3];
+function musicStart(){try{ac();if(mt)return;mnext=AC.currentTime+.1;mt=setInterval(()=>{while(mnext<AC.currentTime+.6){const ch=CH[Math.floor(mi/8)%4],k=mi%8;if(k===0){osc(ch[0],mnext,2.7,"sine",.9,mg);osc(ch[1][0]*1.5,mnext,2.7,"sine",.25,mg)}osc(ch[1][PT[k]],mnext,.55,"triangle",.5,mg);mi++;mnext+=.35}},120)}catch(e){}}
+function setVol(v){musVol=v/100;if(mg)mg.gain.value=MG()}
+function toggleMute(){muted=!muted;$("mute").textContent=muted?"🔇":"🔊";if(mg)mg.gain.value=MG();if(!muted){musicStart();SFX.clk()}}
+function boom(){const E=["🎉","✨","🧬","⭐","🔬","🏅"];for(let i=0;i<22;i++){const s=document.createElement("span");s.className="cf";s.textContent=E[i%6];s.style.setProperty("--x",(Math.random()*500-250)+"px");s.style.setProperty("--y",(Math.random()*400+100)+"px");s.style.setProperty("--r",(Math.random()*720-360)+"deg");document.body.appendChild(s);setTimeout(()=>s.remove(),1700)}}
+/* ---- estrutura ---- */
+const names=["🔎 Sopa de letras","🧩 Organograma","🌀 Labirinto","⚡ Relâmpago","🃏 Memória","🎮 Jogo do Galo","🏆 Arena Quiz","🔐 Escape Room","⭐ Contrarrelógio","⭐ Duelo Final"];
+const DESAFIOS=["Sopa de letras","Organograma","Labirinto do espermatozoide","Desafio relâmpago","Jogo da memória","Jogo do Galo vs. dispositivo","Arena Quiz","Escape Room","Contrarrelógio (opcional)","Duelo Final (opcional)"],T_=8;
+let curSec=0,student="";const doneS=new Set(),lock={};
+function navRefresh(){names.forEach((n,k)=>{const b=$("nav").children[k];b.className=(k>=8?"opt ":"")+(doneS.has(k)?"dn ":"")+(k===curSec?"on":"");b.textContent=(doneS.has(k)?"✅ ":"")+n});$("pg").firstChild.style.width=[...doneS].filter(k=>k<8).length/T_*100+"%"}
+function show(i){curSec=i;names.forEach((_,k)=>$("s"+k).classList.toggle("on",k===i));navRefresh();SFX.clk();window.scrollTo(0,0)}
+names.forEach((n,i)=>{const b=document.createElement("button");b.onclick=()=>show(i);$("nav").appendChild(b)});
+function startGame(){const v=$("nm").value.trim();if(v.length<2){$("gm").textContent="Escreve o teu nome (mínimo 2 letras).";SFX.bad();return}
+ if(btoa($("pw").value.trim())!==P){$("gm").textContent="Senha incorreta. Pede-a ao professor.";SFX.bad();return}
+ musicStart();student=v;$("gate").hidden=true;$("nav").hidden=false;$("mn").hidden=false;SFX.win();show(0)}
+$("nm").onkeydown=$("pw").onkeydown=e=>{if(e.key==="Enter")startGame()};
+function proof(i){const d=new Date(),dt=d.toLocaleDateString("pt-PT")+" · "+d.toLocaleTimeString("pt-PT",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+ return `<div class="proof"><div class="pt">${i<8?`✅ DESAFIO ${i+1}/8 CONCLUÍDO`:"⭐ DESAFIO OPCIONAL CONCLUÍDO"}</div><div class="pn">${esc(student)}</div><div>resolveu corretamente: <b>${DESAFIOS[i]}</b></div><div class="pd">${dt}</div></div><p class="sub">📸 Tira agora uma captura de ecrã desta confirmação, com o teu nome visível.</p>`}
+function win(i){doneS.add(i);navRefresh();SFX.win();boom();const mand=[...doneS].filter(k=>k<8).length===8;
+ $("nx"+i).innerHTML=proof(i)+(i<9?`<button class="btn" onclick="show(${i+1})">${i===7?"Ir para os desafios opcionais ⭐":"Ir para o desafio seguinte ➜"}</button>`:"")+(i<8&&mand?`<p class="ok"><b>🏅 ${esc(student)}, concluíste os 8 desafios obrigatórios! Parabéns! Os desafios ⭐ opcionais esperam por ti.</b></p>`:"")+(doneS.size===10?`<p class="ok"><b>👑 ${esc(student)}, completaste TUDO, incluindo os opcionais. Lenda do SRM!</b></p>`:"");
+ $("nx"+i).scrollIntoView({behavior:"smooth",block:"center"})}
+function fail(i,msgId,txt,fn){lock[i]=true;SFX.bad();let t=4;const m=$(msgId);
+ (function tick(){m.innerHTML=`<span class="bad">❌ ${txt} Há respostas erradas: o desafio recomeça numa versão limpa em ${t} s…</span>`;if(t--<=0){lock[i]=false;m.textContent="";$("nx"+i).innerHTML="";fn()}else setTimeout(tick,1000)})()}
+/* ---- SOPA ---- */
+const WORDS=[["TESTICULOS","testículos","Gónadas masculinas no interior do escroto"],["EPIDIDIMOS","epidídimos","Órgãos tubulares em espiral onde os espermatozoides amadurecem"],["DEFERENTES","deferentes","Canais ___: conduzem espermatozoides até à uretra"],["URETRA","uretra","Via comum ao sistema reprodutor e ao urinário"],["PROSTATA","próstata","Glândula anexa inferior à bexiga, atravessada pela uretra"],["ESCROTO","escroto","Saco que envolve e protege os testículos"],["PENIS","pénis","Órgão cilíndrico de tecido erétil"],["GLANDE","glande","Extremidade muito sensorial do pénis"],["SEMEN","sémen","Mistura de espermatozoides e secreções das glândulas anexas"],["TESTOSTERONA","testosterona","Hormona produzida nos testículos"],["VESICULAS","vesículas","___ seminais: produzem líquido seminal alcalino e nutritivo"],["SEMINIFEROS","seminíferos","Tubos enrolados dos testículos onde se formam os espermatozoides"],["ERETIL","erétil","Tipo de tecido do pénis que se enche de sangue"],["GONADAS","gónadas","Órgãos produtores de gâmetas"],["ESPERMATOZOIDES","espermatozoides","Gâmetas masculinos"]];
+const N=16,D8=[[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0],[-1,-1],[1,-1]];let g,first=null,found;
+function build(seed){let s=seed;const r=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,G=Array(N*N).fill("");
+ for(const[w]of[...WORDS].sort((a,b)=>b[0].length-a[0].length)){let ok=false;
+  for(let t=0;t<3000&&!ok;t++){const[dr,dc]=D8[Math.floor(r()*8)],r0=Math.floor(r()*N),c0=Math.floor(r()*N),er=r0+dr*(w.length-1),ec=c0+dc*(w.length-1);
+   if(er<0||er>=N||ec<0||ec>=N)continue;let fit=true;for(let i=0;i<w.length;i++){const x=G[(r0+dr*i)*N+c0+dc*i];if(x&&x!==w[i]){fit=false;break}}
+   if(!fit)continue;for(let i=0;i<w.length;i++)G[(r0+dr*i)*N+c0+dc*i]=w[i];ok=true}
+  if(!ok)return null}
+ const L="ABCDEFGHILMNOPQRSTUVXZ";return G.map(x=>x||L[Math.floor(r()*L.length)])}
+function initWS(){let sd=Math.floor(Math.random()*9000)+1;g=null;while(!(g=build(sd)))sd++;found=new Set();first=null;$("wm").textContent="";$("ws").innerHTML="";
+ g.forEach((ch,i)=>{const d=document.createElement("div");d.textContent=ch;d.onclick=()=>pick(i);$("ws").appendChild(d)});
+ $("wl").innerHTML=WORDS.map(w=>`<li id="w${w[0]}">${w[2]}</li>`).join("")}
+function pick(i){if(lock[0])return;const cells=$("ws").children;SFX.clk();
+ if(first===null){first=i;cells[i].classList.add("sel");return}
+ cells[first].classList.remove("sel");const r1=Math.floor(first/N),c1=first%N,dr=Math.floor(i/N)-r1,dc=i%N-c1,len=Math.max(Math.abs(dr),Math.abs(dc))+1;
+ if(dr===0||dc===0||Math.abs(dr)===Math.abs(dc)){const sr=Math.sign(dr),sc=Math.sign(dc);let idx=[],str="";
+  for(let k=0;k<len;k++){const p=(r1+sr*k)*N+c1+sc*k;idx.push(p);str+=g[p]}
+  const w=WORDS.find(w=>w[0]===str||w[0]===[...str].reverse().join(""));
+  if(w&&!found.has(w[0])){found.add(w[0]);SFX.ok();idx.forEach(p=>cells[p].classList.add("f"));const li=$("w"+w[0]);li.classList.add("f");li.textContent=w[2]+" → "+w[1];
+   if(found.size===WORDS.length){$("wm").innerHTML='<span class="ok">🎉 Encontraste as 15 palavras!</span>';win(0)}}}
+ first=null}
+function subWS(){if(lock[0]||doneS.has(0))return;if(found.size<WORDS.length)fail(0,"wm",`Só encontraste ${found.size} de ${WORDS.length} palavras.`,initWS)}
+/* ---- ORGANOGRAMA ---- */
+const ALL=["Órgãos internos","Órgãos externos","Testículos","Vias genitais","Glândulas anexas","Epidídimos","Canais deferentes","Uretra","Próstata","Vesículas seminais","Glândulas bulbouretrais","Pénis","Escroto"];
+const GR=[["a",["Órgãos internos"]],["b",["Órgãos externos"]],["c",["Testículos"]],["d",["Vias genitais"]],["e",["Glândulas anexas"]],["f",["Epidídimos","Canais deferentes","Uretra"]],["g",["Próstata","Vesículas seminais","Glândulas bulbouretrais"]],["h",["Pénis","Escroto"]]];
+function osel(grp,n){return Array.from({length:n},(_,i)=>`<select data-g="${grp}" id="o${grp}${i}"><option></option>${shuf(ALL).map(o=>`<option>${o}</option>`).join("")}</select>`).join(" ")}
+function initOrg(){$("og").innerHTML=`<span class="root">Sistema reprodutor masculino</span><div class="lv"><div class="grp">${osel("a",1)}</div><div class="grp">${osel("b",1)}</div></div>
+<div class="lv"><div class="grp"><small>sob os órgãos internos:</small><br>${osel("c",1)}<br>${osel("d",1)}<br>${osel("e",1)}</div><div class="grp"><small>sob os órgãos externos (2):</small><br>${osel("h",2)}</div></div>
+<div class="lv"><div class="grp"><small>sob as vias genitais (3):</small><br>${osel("f",3)}</div><div class="grp"><small>sob as glândulas anexas (3):</small><br>${osel("g",3)}</div></div>`;$("om1").textContent=""}
+function checkOrg(){if(lock[1]||doneS.has(1))return;let ok=0,tot=0;
+ GR.forEach(([k,exp])=>{const sel=[...document.querySelectorAll(`[data-g="${k}"]`)],got=sel.map(s=>s.value);
+  sel.forEach(s=>{tot++;const c=exp.includes(s.value)&&got.filter(x=>x===s.value).length===1;s.className=c?"r":"w";if(c)ok++})});
+ if(ok===tot){$("om1").innerHTML='<span class="ok">🎉 Organograma perfeito!</span>';win(1)}else fail(1,"om1",`${ok} de ${tot} caixas certas.`,initOrg)}
+/* ---- LABIRINTO ---- */
+const M=22;let cells,pos,cps,nxt,moves,t0,mdone;
+function initMZ(){cells=[...Array(M*M)].map(()=>({w:[1,1,1,1],v:0}));const st=[0];cells[0].v=1;const dv=[[-1,0],[0,1],[1,0],[0,-1]];
+ while(st.length){const c=st[st.length-1],r=Math.floor(c/M),q=c%M,nb=dv.map((d,k)=>[k,r+d[0],q+d[1]]).filter(([k,a,b])=>a>=0&&a<M&&b>=0&&b<M&&!cells[a*M+b].v);
+  if(!nb.length){st.pop();continue}const[k,a,b]=nb[Math.floor(Math.random()*nb.length)],n=a*M+b;cells[c].w[k]=0;cells[n].w[(k+2)%4]=0;cells[n].v=1;st.push(n)}
+ const mz=$("mz");mz.style.gridTemplateColumns=`repeat(${M},16px)`;mz.innerHTML="";
+ cells.forEach(c=>{const d=document.createElement("div");d.style.borderWidth=c.w.map(x=>x?"2px":"0").join(" ");mz.appendChild(d)});
+ cps=[];while(cps.length<3){const x=Math.floor(Math.random()*M*M);if(x>M*2&&x<M*M-1&&!cps.includes(x))cps.push(x)}
+ pos=0;nxt=0;moves=0;t0=0;mdone=false;$("mm").textContent="";draw()}
+function draw(){const E=["1️⃣","2️⃣","3️⃣"];[...$("mz").children].forEach((d,i)=>{const k=cps.indexOf(i);d.textContent=i===pos?"🏊":i===M*M-1?"🏁":(k>=nxt?E[k]:"")})}
+function mv(k){if(mdone||lock[2]||cells[pos].w[k])return;if(!t0)t0=Date.now();pos+=[-M,1,M,-1][k];moves++;SFX.step();
+ if(pos===cps[nxt]){nxt++;SFX.ok();$("mm").innerHTML=`<span class="ok">Ponto ${nxt}/3 ✔ (${["epidídimo","canal deferente","uretra"][nxt-1]})</span>`}
+ draw();if(pos===M*M-1){if(nxt===3){mdone=true;$("mm").innerHTML=`<span class="ok">🎉 Ejaculação conseguida em ${Math.round((Date.now()-t0)/1000)} s e ${moves} passos!</span>`;win(2)}
+  else fail(2,"mm",`Chegaste ao fim com apenas ${nxt} de 3 pontos de controlo, pela ordem certa.`,initMZ)}}
+document.addEventListener("keydown",e=>{const k={ArrowUp:0,ArrowRight:1,ArrowDown:2,ArrowLeft:3}[e.key];if(k!==undefined&&$("s2").classList.contains("on")){e.preventDefault();mv(k)}});
+/* ---- RELÂMPAGO ---- */
+const LVB=[["Testículos","gónada"],["Epidídimos","via genital"],["Canais deferentes","via genital"],["Uretra","via genital"],["Próstata","glândula anexa"],["Vesículas seminais","glândula anexa"],["Glândulas bulbouretrais","glândula anexa"],["Pénis","órgão externo"],["Escroto","órgão externo"]];
+const LO=["","gónada","via genital","glândula anexa","órgão externo"];
+const VFB=[["Os testículos produzem espermatozoides e testosterona.",true],["Os espermatozoides amadurecem nos canais deferentes.",false],["A uretra é comum ao sistema reprodutor e ao sistema urinário.",true],["O escroto mantém os testículos 2 °C a 4 °C acima da temperatura corporal média.",false],["O líquido seminal é alcalino e rico em substâncias nutritivas.",true],["A próstata localiza-se superiormente à bexiga.",false],["As glândulas bulbouretrais produzem um muco que neutraliza a acidez da uretra.",true],["O tecido do pénis enche-se de sangue durante a excitação sexual.",true],["Os espermatozoides representam cerca de 60% do sémen.",true],["A testosterona é produzida nas vesículas seminais.",false],["Os tubos seminíferos localizam-se no interior dos epidídimos.",false],["Os canais deferentes conduzem espermatozoides até à uretra.",true]];
+let c5a,c5b;
+function initFlash(){c5a=shuf(LVB).slice(0,8);c5b=shuf(VFB).slice(0,8);
+ $("lv").innerHTML=c5a.map((q,i)=>`<div class="row"><b>${q[0]}</b> é uma/um <select id="a${i}">${LO.map(o=>`<option>${o}</option>`).join("")}</select></div>`).join("");
+ $("vf").innerHTML=c5b.map((q,i)=>`<div class="row">${q[0]} <select id="b${i}"><option></option><option>verdadeiro</option><option>falso</option></select></div>`).join("")}
+function checkFlash(){if(lock[3]||doneS.has(3))return;let ok=0;
+ c5a.forEach((q,i)=>{const s=$("a"+i),c=s.value===q[1];s.className=c?"r":"w";if(c)ok++});
+ c5b.forEach((q,i)=>{const s=$("b"+i),c=s.value===(q[1]?"verdadeiro":"falso");s.className=c?"r":"w";if(c)ok++});
+ if(ok===16){$("om").innerHTML='<span class="ok">🎉 16 em 16!</span>';win(3)}else fail(3,"om",`${ok} de 16 certas.`,initFlash)}
+/* ---- MEMÓRIA ---- */
+const MP=[["Testículos","Produzem espermatozoides e testosterona"],["Tubos seminíferos","Tubos enrolados onde se formam os espermatozoides"],["Epidídimos","Armazenam e permitem o amadurecimento dos espermatozoides"],["Canais deferentes","Conduzem os espermatozoides até à uretra"],["Uretra","Transporta sémen e urina; comum a dois sistemas"],["Vesículas seminais","Produzem líquido seminal alcalino e nutritivo"],["Próstata","Produz líquido prostático viscoso e alcalino"],["Glândulas bulbouretrais","Muco que neutraliza a acidez da uretra"],["Pénis","Órgão de tecido erétil que deposita espermatozoides na vagina"],["Glande","Extremidade do pénis, muito sensorial"],["Escroto","Mantém os testículos 2 °C a 4 °C abaixo da temperatura corporal"],["Testosterona","Hormona que regula a produção de espermatozoides"]];
+let mcs,mA,mLock,mPairs,mErr;
+function initMem(){mcs=[];MP.forEach((p,i)=>{mcs.push({i,t:p[0],s:0},{i,t:p[1],s:1})});mcs=shuf(mcs);mA=null;mLock=false;mPairs=0;mErr=0;$("mem").textContent="Pares: 0/12 · Falhas: 0/24";$("mc").innerHTML="";
+ mcs.forEach((c,k)=>{const b=document.createElement("button");b.textContent="❓";b.onclick=()=>flip(k,b);c.b=b;$("mc").appendChild(b)})}
+function flip(k,b){if(mLock||lock[4]||doneS.has(4)||b.classList.contains("up")||b.classList.contains("done"))return;SFX.clk();b.textContent=mcs[k].t;b.classList.add("up");
+ if(mA===null){mA=k;return}const a=mcs[mA],c=mcs[k];mA=null;
+ if(a.i===c.i&&a.s!==c.s){a.b.className=c.b.className="done";mPairs++;SFX.ok();
+  if(mPairs===12){$("mem").innerHTML='<span class="ok">🎉 Todos os pares!</span>';win(4)}else $("mem").textContent=`Pares: ${mPairs}/12 · Falhas: ${mErr}/24`}
+ else{mErr++;mLock=true;SFX.bad();setTimeout(()=>{mLock=false;if(mErr>=24){fail(4,"mem","Esgotaste as 24 tentativas falhadas.",initMem);return}
+  [a,c].forEach(x=>{x.b.className="";x.b.textContent="❓"});$("mem").textContent=`Pares: ${mPairs}/12 · Falhas: ${mErr}/24`},1100)}}
+/* ---- BANCO DE PERGUNTAS ---- */
+const QB=[["Qual é a função principal dos testículos?",["Armazenar urina","Produzir espermatozoides e testosterona","Produzir líquido prostático","Conduzir o sémen"],1],
+["Onde se formam os espermatozoides?",["Nos tubos seminíferos","Nos canais deferentes","Na uretra","Na próstata"],0],
+["Onde os espermatozoides são armazenados e amadurecem?",["Escroto","Próstata","Epidídimos","Glande"],2],
+["Que estruturas conduzem os espermatozoides até à uretra?",["Canais deferentes","Vesículas seminais","Glândulas bulbouretrais","Epidídimos"],0],
+["A uretra é comum a que dois sistemas?",["Digestivo e reprodutor","Reprodutor e urinário","Urinário e circulatório","Respiratório e reprodutor"],1],
+["O que produzem as vesículas seminais?",["Testosterona","Espermatozoides","Líquido seminal alcalino e nutritivo","Urina"],2],
+["Qual a glândula anexa atravessada pela uretra, inferior à bexiga?",["Próstata","Vesícula seminal","Glândula bulbouretral","Epidídimo"],0],
+["Qual é a função do líquido prostático?",["Produzir testosterona","Dar mobilidade aos espermatozoides e protegê-los da acidez","Armazenar espermatozoides","Eliminar a urina"],1],
+["O muco das glândulas bulbouretrais…",["produz espermatozoides","neutraliza o pH ácido da uretra e remove resíduos de urina","amadurece os espermatozoides","regula a temperatura"],1],
+["Qual é a função do escroto?",["Produzir testosterona","Manter os testículos a uma temperatura inferior à do corpo","Conduzir a urina","Produzir muco"],1],
+["Em relação à temperatura corporal média, a temperatura dos testículos é…",["2 °C a 4 °C inferior","igual","2 °C a 4 °C superior","10 °C inferior"],0],
+["Que tecido do pénis se enche de sangue na excitação sexual?",["Tecido ósseo","Tecido erétil","Tecido nervoso","Tecido adiposo"],1],
+["A extremidade muito sensorial do pénis chama-se…",["glande","escroto","próstata","epidídimo"],0],
+["Qual é a hormona produzida nos testículos?",["Estrogénio","Progesterona","Testosterona","Insulina"],2],
+["Aproximadamente que percentagem do sémen são espermatozoides?",["10%","30%","60%","90%"],2],
+["Qual destas estruturas é um órgão externo do SRM?",["Próstata","Escroto","Epidídimo","Uretra"],1],
+["Qual destas estruturas é uma glândula anexa?",["Canal deferente","Testículo","Vesícula seminal","Uretra"],2],
+["Qual é a ordem correta do trajeto dos espermatozoides?",["testículo → canal deferente → epidídimo → uretra","testículo → epidídimo → canal deferente → uretra","epidídimo → testículo → uretra → canal deferente","uretra → canal deferente → epidídimo → testículo"],1]];
+/* ---- GALO ---- */
+const LN=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];let gb,gp,gdone;
+const gw=p=>LN.some(l=>l.every(i=>gb[i]===p));
+function gInit(){gb=Array(9).fill("");gp=null;gdone=false;$("gq").innerHTML="";$("gmsg").textContent="";gDraw()}
+function gDraw(){$("gl").innerHTML="";gb.forEach((v,i)=>{const b=document.createElement("button");b.className=v;b.textContent=v==="X"?"❌":v==="O"?"⭕":"";b.onclick=()=>gClick(i);$("gl").appendChild(b)})}
+function gClick(i){if(gdone||lock[5]||gp!==null||gb[i])return;gp=i;SFX.clk();const[q,o,c]=QB[Math.floor(Math.random()*QB.length)];
+ $("gq").innerHTML=`<p><b>${q}</b></p>`+shuf(o.map((t,k)=>[t,k])).map(([t,k])=>`<button class="qo" onclick="gAns(${k},${c})">${t}</button>`).join("")}
+function gAns(k,c){const i=gp;gp=null;$("gq").innerHTML="";
+ if(k===c){gb[i]="X";SFX.ok();$("gmsg").innerHTML='<span class="ok">✔ Casa tua!</span>'}else{gb[i]="O";SFX.bad();$("gmsg").innerHTML='<span class="bad">✖ Errado: a casa ficou para o dispositivo!</span>'}
+ gDraw();if(gEnd())return;if(k===c){setTimeout(()=>{const f=gb.map((v,j)=>v?-1:j).filter(j=>j>=0),tr=p=>f.find(j=>{gb[j]=p;const w=gw(p);gb[j]="";return w}),m=tr("O")??tr("X")??(gb[4]?null:4)??shuf(f)[0];gb[m??shuf(f)[0]]="O";SFX.clk();gDraw();gEnd()},650)}}
+function gEnd(){if(gw("X")){gdone=true;$("gmsg").innerHTML='<span class="ok">🎉 Venceste o dispositivo!</span>';win(5);return true}
+ if(gw("O")){gdone=true;fail(5,"gmsg","O dispositivo venceu desta vez.",gInit);return true}
+ if(gb.every(x=>x)){gdone=true;fail(5,"gmsg","Empate.",gInit);return true}return false}
+/* ---- ARENA QUIZ ---- */
+let qs,qi,tl,tm;
+function qzStart(){qs=shuf(QB).slice(0,10);qi=0;$("qzm").textContent="";qzNext()}
+function qzNext(){clearInterval(tm);if(qi>=qs.length){$("qz").innerHTML='<p class="ok"><b>🏆 10 em 10! Partida perfeita.</b></p>';return win(6)}
+ const[q,o]=qs[qi];tl=20;
+ $("qz").innerHTML=`<div class="hud"><span>Pergunta ${qi+1}/${qs.length}</span><span>⏱ máx. 20 s</span></div><div class="bar"><i id="tb"></i></div><p>${q}</p>`+shuf(o.map((t,i)=>[t,i])).map(([t,i])=>`<button class="qo" data-i="${i}" onclick="qzAns(${i})">${t}</button>`).join("");
+ tm=setInterval(()=>{tl-=.1;$("tb").style.width=Math.max(tl,0)/20*100+"%";if(tl<=0)qzAns(-1)},100)}
+function qzAns(i){clearInterval(tm);const c=qs[qi][2];document.querySelectorAll(".qo").forEach(b=>{b.disabled=true;if(+b.dataset.i===c)b.classList.add("ok2");else if(+b.dataset.i===i)b.classList.add("no")});
+ if(i===c){SFX.ok();qi++;setTimeout(qzNext,900)}else fail(6,"qzm",i<0?"Tempo esgotado.":"Resposta errada.",qzStart)}
+$("qz").innerHTML='<button class="btn" onclick="qzStart()">▶ Começar a partida</button>';
+/* ---- ESCAPE ROOM ---- */
+const ES=[["Gónadas masculinas onde se formam os espermatozoides.",["testiculos","testiculo"],"T","10 letras."],
+["Saco que envolve os testículos e mantém a sua temperatura abaixo da do corpo.",["escroto"],"A","7 letras."],
+["Órgãos em espiral onde os espermatozoides amadurecem e ficam armazenados.",["epididimos","epididimo"],"P","10 letras."],
+["Via genital comum ao sistema urinário, que transporta sémen e urina.",["uretra"],"R","6 letras."],
+["Glândulas anexas que produzem o líquido seminal: vesículas ___.",["seminais","vesiculas seminais"],"O","8 letras."],
+["Glândulas anexas que produzem muco que neutraliza a acidez da uretra (nome composto).",["bulbouretrais","glandulas bulbouretrais"],"S","13 letras."],
+["Órgão de tecido erétil que deposita os espermatozoides na vagina.",["penis"],"T","5 letras."],
+["Hormona produzida nos testículos que regula a produção de espermatozoides.",["testosterona"],"A","12 letras."]];
+let es;
+function esInit(){es=0;$("esm").textContent="";esDraw()}
+function esDraw(){let h=`<p class="code">🔐 ${ES.map((e,i)=>i<es?e[2]:"_").join(" ")}</p>`;
+ if(es<8)h+=`<p><b>Porta ${es+1}/8 ·</b> ${ES[es][0]}</p><input class="t" id="ei" autocomplete="off"><button class="btn" onclick="esTry()">Tentar</button><button class="btn alt" onclick="esHint()">💡 Pista</button>`;
+ else if(es===8)h+=`<p>Reuniste as 8 letras, mas estão baralhadas! Forma a palavra-passe do cofre.</p><input class="t" id="ei" autocomplete="off"><button class="btn" onclick="esFinal()">Abrir o cofre</button>`;
+ else h+=`<p><b>🎉 Cofre aberto!</b> Dominas o SRM… e conseguiste escapar!</p>`;
+ $("es").innerHTML=h;if($("ei"))$("ei").onkeydown=e=>{if(e.key==="Enter")(es<8?esTry:esFinal)()}}
+function esTry(){if(lock[7])return;if(ES[es][1].includes(norm($("ei").value))){es++;SFX.ok();$("esm").innerHTML='<span class="ok">✔ Porta aberta! Ganhaste uma letra.</span>';esDraw()}else{$("es").innerHTML="";fail(7,"esm","Resposta errada: voltas à Porta 1.",esInit)}}
+function esHint(){if(!lock[7])$("esm").textContent="💡 "+ES[es][3]}
+function esFinal(){if(lock[7])return;if(norm($("ei").value)==="prostata"){es=9;$("esm").textContent="";esDraw();win(7)}else{$("es").innerHTML="";fail(7,"esm","Palavra-passe errada: voltas à Porta 1.",esInit)}}
+/* ---- OPCIONAL 1: CONTRARRELÓGIO ---- */
+let ctT,cq,ci,cn,ct;
+function ctInit(){clearInterval(ctT);$("ctq").innerHTML='<button class="btn" onclick="ctGo()">▶ Começar (75 s)</button>';$("ctmsg").textContent=""}
+function ctGo(){ct=75;cn=0;ci=0;cq=shuf(QB);$("ctmsg").textContent="";$("ctq").innerHTML='<div class="hud"><span id="chud"></span><span id="ctt"></span></div><div class="bar"><i id="ctb"></i></div><div id="ctqq"></div>';ctNext();
+ ctT=setInterval(()=>{ct-=.1;if(ct<=0){clearInterval(ctT);$("ctb").style.width="0";fail(8,"ctmsg",`Tempo esgotado com ${cn}/12 certas.`,ctInit);return}$("ctb").style.width=ct/75*100+"%";$("ctt").textContent="⏱ "+Math.ceil(ct)+" s"},100)}
+function ctNext(){const[q,o]=cq[ci%cq.length];$("chud").textContent=`Certas: ${cn}/12`;$("ctqq").innerHTML=`<p>${q}</p>`+shuf(o.map((x,i)=>[x,i])).map(([x,i])=>`<button class="qo" onclick="ctAns(${i})">${x}</button>`).join("")}
+function ctAns(i){if(lock[8]||doneS.has(8))return;const c=cq[ci%cq.length][2];ci++;
+ if(i===c){cn++;SFX.ok();if(cn>=12){clearInterval(ctT);$("ctmsg").innerHTML=`<span class="ok">🎉 12 certas com ${Math.ceil(ct)} s de sobra!</span>`;win(8);return}$("ctmsg").innerHTML='<span class="ok">✔</span>'}
+ else{ct-=5;SFX.bad();$("ctmsg").innerHTML='<span class="bad">✖ −5 s</span>'}ctNext()}
+/* ---- OPCIONAL 2: DUELO FINAL ---- */
+let dS,dD,dT,dl,dt0,dq,dopen;
+function duInit(){clearInterval(dT);dS=0;dD=0;dopen=false;$("duq").innerHTML='<button class="btn" onclick="duRound()">⚔️ Começar o duelo</button>';$("dumsg").textContent=""}
+function duRound(){if(lock[9])return;dq=QB[Math.floor(Math.random()*QB.length)];dl=15;dt0=Date.now();dopen=true;
+ $("duq").innerHTML=`<div class="hud"><span>Tu ${dS} × ${dD} 🤖</span><span>primeiro a 6</span></div><div class="bar"><i id="dub"></i></div><p><b>${dq[0]}</b></p>`+shuf(dq[1].map((x,i)=>[x,i])).map(([x,i])=>`<button class="qo" data-i="${i}" onclick="duAns(${i})">${x}</button>`).join("");$("dumsg").textContent="";
+ clearInterval(dT);dT=setInterval(()=>{dl-=.1;$("dub").style.width=Math.max(dl,0)/15*100+"%";if(dl<=0)duAns(-1)},100)}
+function duAns(i){if(!dopen)return;dopen=false;clearInterval(dT);const c=dq[2],st=i===c,sT=(Date.now()-dt0)/1000,dc=Math.random()<.65,dtm=4+Math.random()*6;
+ document.querySelectorAll(".qo").forEach(b=>{b.disabled=true;if(+b.dataset.i===c)b.classList.add("ok2");else if(+b.dataset.i===i)b.classList.add("no")});
+ let m;if(st&&(!dc||sT<dtm)){dS++;SFX.ok();m=`<span class="ok">✔ Ponto teu! ${dc?`(o dispositivo acertou, mas em ${dtm.toFixed(1)} s)`:"(o dispositivo falhou)"}</span>`}
+ else if(dc){dD++;SFX.bad();m=`<span class="bad">🤖 Ponto do dispositivo! ${st?`Acertaste, mas ele respondeu em ${dtm.toFixed(1)} s.`:"Tu falhaste."}</span>`}
+ else{m="Ninguém acertou: sem pontos."}
+ $("dumsg").innerHTML=m+` · Tu ${dS} × ${dD} 🤖`;
+ if(dS>=6){$("dumsg").innerHTML+='<br><span class="ok">🎉 Derrotaste o dispositivo!</span>';win(9)}
+ else if(dD>=6)fail(9,"dumsg","O dispositivo chegou aos 6 pontos primeiro.",duInit);
+ else setTimeout(duRound,2200)}
+initWS();initOrg();initMZ();initFlash();initMem();gInit();esInit();ctInit();duInit();navRefresh();
+</script>
+</body>
+</html>
